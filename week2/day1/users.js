@@ -181,18 +181,18 @@ const usersData = [
 // Create a function to print user full address
 // suite - street, city, zipcode
 
-const printUserAddress = (user, users) => {};
+const printUserAddress = (user) => {};
 
-console.log(printUserAddress(users[1]));
-console.log(printUserAddress(users[4]));
-console.log(printUserAddress(users[6]));
+console.log(printUserAddress(usersData[1]));
+console.log(printUserAddress(usersData[4]));
+console.log(printUserAddress(usersData[6]));
 
-// Create a function to separate first name and last name for all users
+// Create a function to separate first name and last name for all users and return a new array of users
+// {firstName: "", lastName: ""}
 
 const setFirstLastName = (users) => {};
 
-console.log(setFirstLastName(usersData));
-
+usersData = [...setFirstLastName(usersData)];
 // Create a function to get user by id and print object with user first and last name
 const getUserById = (userId, users) => {};
 
@@ -201,11 +201,11 @@ console.log(getUserById(8, usersData));
 
 // Create a function to delete user by id and print message to inform which user id deleted
 
-const deleteUser = (userId) => {};
+const deleteUser = (userId, users) => {};
 
-console.log(deleteUser(4));
+console.log(deleteUser(4, usersData));
 
-// Create a function to add a new user and print message including new user id.
+// Create a function to add a new user, print message including new user id and return new array of users.
 const newUser = [
   ['name', 'Glenna Reichert'],
   ['username', 'Delphine'],
@@ -229,7 +229,7 @@ const newUser = [
 
 const createUser = (userData) => {};
 
-console.log(createUser(newUser));
+usersData = [...createUser(newUser)];
 
 // Create a function to update user by id and print updated user
 
