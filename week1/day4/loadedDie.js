@@ -2,7 +2,7 @@
 The following function implements the roll of a die; it returns a random number between 1 and 6 each time it is called.
 
 const rollDie = function () {
-  return Math.floor(1 + Math.random() * 6);
+  return Math.floor(1 + Math.random() * 6); 
 }
 
 console.log(rollDie());  // 1 (for example)
@@ -11,9 +11,12 @@ However, instead of a random die, we want to create a cheat die that would let u
 function makeLoadedDie() {
   const list = [5, 4, 6, 1, 6, 4, 2, 3, 3, 5];
   /* your code here */
-
+  let num = 0;
   return function () {
     /* your code here */
+    let result = list[num];
+    num++;
+    return result;
   };
 }
 

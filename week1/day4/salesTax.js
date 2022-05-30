@@ -38,6 +38,60 @@ const companySalesData = [
 
 const calculateSalesTax = function(salesData, taxRates) {
     // Implement your code here
+    const obj = {};
+    const Telus = {};
+    const Bombardier = {};
+    //Sum up sales of BC and SK
+    let salesTelus = calculateSalesBC(companySalesData[0].sales) + calculateSalesSK(companySalesData[2].sales);
+    //Sum up tax of BC and SK
+    let taxTelus = calculateTaxBC(salesTaxRates.BC) + calculateTaxSK(salesTaxRates.SK);
+    Telus.totalSales = salesTelus;
+    Telus.totalTax = taxTelus;
+    Bombardier.totalSales = calculateSalesAB(companySalesData[1].sales);
+    Bombardier.totalTax = calculateTaxAB(salesTaxRates.AB);
+    obj = Telus;
+    console.log(obj);
+    return obj;
 }
 
+const calculateSalesBC = function(salesArrBC) {
+    let sumOfSalesBC = 0;
+    salesArrBC.forEach(function(salesBC){
+      sumOfSalesBC += salesBC;
+    })
+    return sumOfSalesBC;
+}
+const calculateTaxBC = function(taxRateBC) {
+   let totalTaxBC = calculateSalesBC(companySalesData[0].sales)*taxRateBC;
+   return totalTaxBC;
+}
+
+const calculateSalesAB = function(salesArrAB) {
+  let sumOfSalesAB = 0;
+  salesArrAB.forEach(function(salesAB){
+    sumOfSalesAB += salesAB;
+  })
+  return sumOfSalesAB;
+}
+const calculateTaxAB = function(taxRateAB) {
+  let totalTaxAB = calculateSalesBC(companySalesData[1].sales)*taxRateAB;
+  return totalTaxAB;
+}
+
+const calculateSalesSK = function(salesArrSK) {
+  let sumOfSalesSK = 0;
+  salesArrSK.forEach(function(salesSK){
+    sumOfSalesSK += salesSK;
+  })
+  return sumOfSalesSK;
+}
+const calculateTaxSK = function(taxRateSK) {
+  let totalTaxSK = calculateSalesSK(companySalesData[2].sales)*taxRateSK;
+  return totalTaxSK;
+}
+
+// console.log(calculateSalesBC(companySalesData[0].sales));
+// console.log(calculateSalesAB(companySalesData[1].sales));
+// console.log(calculateSalesSK(companySalesData[2].sales));
+// console.log(calculateTaxBC(salesTaxRates.BC));
 console.log(calculateSalesTax(companySalesData, salesTaxRates));
