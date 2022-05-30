@@ -15,83 +15,62 @@ If you try to access an object attribute (property) that does not exist, then it
 const salesTaxRates = {
   AB: 0.05,
   BC: 0.12,
-  SK: 0.10
+  SK: 0.1,
 };
 
 const companySalesData = [
   {
-    name: "Telus",
-    province: "BC",
-    sales: [ 100, 200, 400 ]
+    name: 'Telus',
+    province: 'BC',
+    sales: [100, 200, 400],
   },
   {
-    name: "Bombardier",
-    province: "AB",
-    sales: [ 80, 20, 10, 100, 90, 500 ]
+    name: 'Bombardier',
+    province: 'AB',
+    sales: [80, 20, 10, 100, 90, 500],
   },
   {
-    name: "Telus",
-    province: "SK",
-    sales: [ 500, 100 ]
-  }
+    name: 'Telus',
+    province: 'SK',
+    sales: [500, 100],
+  },
 ];
 
-const calculateSalesTax = function(salesData, taxRates) {
-    // Implement your code here
-    const obj = {};
-    const Telus = {};
-    const Bombardier = {};
-    //Sum up sales of BC and SK
-    let salesTelus = calculateSalesBC(companySalesData[0].sales) + calculateSalesSK(companySalesData[2].sales);
-    //Sum up tax of BC and SK
-    let taxTelus = calculateTaxBC(salesTaxRates.BC) + calculateTaxSK(salesTaxRates.SK);
-    Telus.totalSales = salesTelus;
-    Telus.totalTax = taxTelus;
-    Bombardier.totalSales = calculateSalesAB(companySalesData[1].sales);
-    Bombardier.totalTax = calculateTaxAB(salesTaxRates.AB);
-    obj = Telus;
-    console.log(obj);
-    return obj;
-}
+const calculateSalesTax = function (salesData, taxRates) {
+  // Implement your code here
+  const result = {};
+  salesData.forEach((salesInfo) => {
+    let totalSales = 0;
+    let totalTax = 0;
+    let companyObject = {};
+    if (result[salesInfo.name]) {
+      companyObject = { ...result[salesInfo.name] };
+      totalSales = companyObject.totalSales;
+      totalTax = companyObject.totalTax;
+    }
+    totalSales = salesInfo.sales.reduce((total, sale) => {
+      return total + sale;
+    }, totalSales);
+    totalTax += totalSales * taxRates[salesInfo.province];
+    result[salesInfo.name] = {
+      totalSales,
+      totalTax,
+    };
+  });
+  return result;
+};
 
-const calculateSalesBC = function(salesArrBC) {
-    let sumOfSalesBC = 0;
-    salesArrBC.forEach(function(salesBC){
-      sumOfSalesBC += salesBC;
-    })
-    return sumOfSalesBC;
-}
-const calculateTaxBC = function(taxRateBC) {
-   let totalTaxBC = calculateSalesBC(companySalesData[0].sales)*taxRateBC;
-   return totalTaxBC;
-}
-
-const calculateSalesAB = function(salesArrAB) {
-  let sumOfSalesAB = 0;
-  salesArrAB.forEach(function(salesAB){
-    sumOfSalesAB += salesAB;
-  })
-  return sumOfSalesAB;
-}
-const calculateTaxAB = function(taxRateAB) {
-  let totalTaxAB = calculateSalesBC(companySalesData[1].sales)*taxRateAB;
-  return totalTaxAB;
-}
-
-const calculateSalesSK = function(salesArrSK) {
-  let sumOfSalesSK = 0;
-  salesArrSK.forEach(function(salesSK){
-    sumOfSalesSK += salesSK;
-  })
-  return sumOfSalesSK;
-}
-const calculateTaxSK = function(taxRateSK) {
-  let totalTaxSK = calculateSalesSK(companySalesData[2].sales)*taxRateSK;
-  return totalTaxSK;
-}
-
-// console.log(calculateSalesBC(companySalesData[0].sales));
-// console.log(calculateSalesAB(companySalesData[1].sales));
-// console.log(calculateSalesSK(companySalesData[2].sales));
-// console.log(calculateTaxBC(salesTaxRates.BC));
 console.log(calculateSalesTax(companySalesData, salesTaxRates));
+
+/*
+{
+  Telus: {
+    totalSales: value,
+    totalTax: value
+  },
+  Bombardier: {
+    totalSales: value,
+    totalTax: value
+  }
+}
+*/

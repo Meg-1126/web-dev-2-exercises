@@ -22,6 +22,7 @@ const afternoonClass = [
 
 //Create a function to sort names A-Z (sort)
 const sortNames = (names) => {
+  const arr = names;
   return [...names].sort();
 };
 
@@ -44,7 +45,7 @@ const findStudent = (name, listA, listB) => {
     });
   };
   const afternoon = checkName(listA);
-  if (afternoon === name) {
+  if (afternoon) {
     return `${name} is attending afternoon class.`;
   } else {
     const morning = checkName(listB);
