@@ -51,3 +51,30 @@ You can use a regular loop or setInterval to make it work.
 Bonus: You can try to remove all these repetitive setTimeouts to and make a shorter and cleaner code.
 
 */
+
+ let i = 0;
+ const interval = setInterval(()=> {
+   if (i >= 3) {
+    clearInterval(interval);
+   } else {
+     setTimeout(() => {
+       process.stdout.write('\r|');
+     }, 100);
+     
+     setTimeout(() => {
+       process.stdout.write('\r/');
+     }, 300);
+     
+     setTimeout(() => {
+       process.stdout.write('\r-');
+     }, 500);
+     
+     setTimeout(() => {
+       // Need to escape the backslash since it's a special character.
+       process.stdout.write('\r\\'); 
+     }, 700);
+     i++;
+   }
+ }, 1000);
+ 
+ 
