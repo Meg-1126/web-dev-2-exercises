@@ -12,9 +12,11 @@ The function should return an object with each character as key names and how ma
 
 data = ['CICCC', 'Cornerstone College', 'Web Development'];
 
-const countOnly = (allItems, itemsToCount) => {};
+const countOnly = (allItems, itemsToCount) => {
+
+};
 
 console.log(countOnly(data, { a: true, c: true, l: false, o: true }));
-//{a:0, c:6, o:3 }
-console.log(countOnly(data, { r: true, l: true, b: false, w: true }));
+//{a:0, c:6, o:4 }
+console.log(countOnly(data, { r: true, l: true, b: false, w: true })); //{a:0, c:6, o:4 }
 console.log(countOnly(data, { t: false, u: true, s: true, ' ': true }));

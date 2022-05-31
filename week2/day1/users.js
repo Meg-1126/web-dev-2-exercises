@@ -1,4 +1,4 @@
-const usersData = [
+let usersData = [
   {
     id: 1,
     name: 'Leanne Graham',
@@ -160,7 +160,7 @@ const usersData = [
     website: 'conrad.com',
   },
   {
-    id: 9,
+    id: 10,
     name: 'Clementina DuBuque',
     username: 'Moriah.Stanton',
     email: 'Rey.Padberg@karina.biz',
@@ -180,30 +180,84 @@ const usersData = [
 
 // Create a function to print user full address
 // suite - street, city, zipcode
+// loop objects
 
-const printUserAddress = (user) => {};
+// for (let info in dog) {
+//   console.log(info); // name, type, breed
+//   console.log(dog[info]); // Woody, dog, labrador
+//   // dog[name][type][breed]
+// }
 
-console.log(printUserAddress(usersData[1]));
-console.log(printUserAddress(usersData[4]));
-console.log(printUserAddress(usersData[6]));
+// //object methods (returns array) - keys, values, entries
+// console.log(Object.keys(dog)); // [name, type, breed]
+// console.log(Object.values(dog)); // [Woody, dog, labrador]
+// console.log(Object.entries(dog)); // [[name,Woody], [type,dog], [breed,labrador]]
+
+const printUserAddress = (user) => {
+  let suiteValue = "";
+  let streetValue = "";
+  let cityValue = "";
+  let zipcodeValue = "";
+  let addressObj = user.address;
+//  console.log(addressObj);
+ suiteValue = addressObj.suite;
+ streetValue = addressObj.street;
+ cityValue = addressObj.city;
+ zipcodeValue = addressObj.zipcode;
+ if (suiteValue !== undefined) {
+   return `${suiteValue} - ${streetValue}, ${cityValue}, ${zipcodeValue}`;
+ } else {
+  return `${streetValue}, ${cityValue}, ${zipcodeValue}`;
+ }
+};
+
+// console.log(printUserAddress(usersData[1]));
+// console.log(printUserAddress(usersData[4]));
+// console.log(printUserAddress(usersData[6]));
 
 // Create a function to separate first name and last name for all users and return a new array of users
 // {firstName: "", lastName: ""}
 
-const setFirstLastName = (users) => {};
+const setFirstLastName = (users) => {
+  
+  for (let item in users) {
+    let fullName = users[item].name;
+    let nameArr = fullName.split(" ");
+    if (nameArr.includes("Mrs.")) {
+     nameArr.shift();
+    }
+    users[item].firstName = nameArr[0];
+    users[item].lastName = nameArr[1]; 
+  }
+  return users;
+};
 
 usersData = [...setFirstLastName(usersData)];
-// Create a function to get user by id and print object with user first and last name
-const getUserById = (userId, users) => {};
 
-console.log(getUserById(5, usersData));
-console.log(getUserById(8, usersData));
+// Create a function to get user by id and print object with user first and last name
+const getUserById = (userId, users) => {
+  for (let item in users) {
+    if ((users[item].id) === userId) {
+    return users[item];
+    } 
+  }
+};
+
+// console.log(getUserById(5, usersData));
+// console.log(getUserById(8, usersData));
 
 // Create a function to delete user by id and print message to inform which user id deleted
+const deleteUser = (userId, users) => {
+   for (let item in users) {
+     if ((users[item].id) === userId) {
+       let index = users.indexOf(item);
+       users.splice(index, 1);
+      return `User ID ${userId} is deleted!`;
+     }
+   }
+};
 
-const deleteUser = (userId, users) => {};
-
-console.log(deleteUser(4, usersData));
+// console.log(deleteUser(4, usersData));
 
 // Create a function to add a new user, print message including new user id and return new array of users.
 const newUser = [
@@ -227,13 +281,17 @@ const newUser = [
   ['website', 'conrad.com'],
 ];
 
-const createUser = (userData) => {};
+const createUser = (userData) => {
+  
+  usersData.push(userData);
+  console.log(usersData);
+};
 
 usersData = [...createUser(newUser)];
 
 // Create a function to update user by id and print updated user
 
-const updateUser = (userId, updateInfo) => {};
+// const updateUser = (userId, updateInfo) => {};
 
-console.log(updateUser(1, ['phone', '1-007-637-3180']));
-console.log(updateUser(3, ['email', 'clementine@yesenia.net']));
+// console.log(updateUser(1, ['phone', '1-007-637-3180']));
+// console.log(updateUser(3, ['email', 'clementine@yesenia.net']));
