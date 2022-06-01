@@ -282,12 +282,17 @@ const newUser = [
 ];
 
 const createUser = (userData) => {
-  
-  usersData.push(userData);
-  console.log(usersData);
+  let newUserObj = {};
+  newUserObj.id = usersData.length + 1;
+  userData.forEach((item)=>{
+    newUserObj[item[0]] = item[1];
+  });
+  usersData.push(newUserObj);
+ return `New user added: ${newUserObj.id}`;
 };
+console.log(createUser(newUser));
+// usersData = [...createUser(newUser)];
 
-usersData = [...createUser(newUser)];
 
 // Create a function to update user by id and print updated user
 
