@@ -8,9 +8,9 @@
 // console.log('3');
 
 //example 2
-// const a = () => {
-//   console.log('running function a...');
-// };
+const a = () => {
+  console.log('running function a...');
+};
 // console.log('1');
 // console.log('2');
 // a();
@@ -20,42 +20,52 @@
 // console.log('1');
 // setTimeout(() => {
 //   console.log('t1');
-// }, 1);
+// }, 1000);
 // console.log('2');
 // a();
 // console.log('3');
 
 // example 4 - Cleaning the house
-
-//clean the toilet
-//sweep the floor
-//vaccum the floor
-// dishwash dishes
-// wash clothes
+// clean the toilet
+console.log('clean the toilet');
+setTimeout(() => {
+  // play music -async
+  console.log('play music');
+}, 1000);
+// dishwash dishes -async
+setTimeout(() => {
+  setTimeout(() => {
+    console.log('dishwash dishes');
+  }, 1000);
+}, 500);
+// exchange garbage
+console.log('exchange garbage');
+// wash clothes - async
+setTimeout(() => {
+  console.log('wash clothes');
+}, -1);
+// sweep the floop
+console.log('sweep the floop');
+// mopping floor
+console.log('mopping floor');
 
 //example 5
-const higherOrderFunc = function (callback) {
-  const data = { initials: 'AL' };
+// const higherOrderFunc = function (callback) {
+//   const data = { initials: 'AL' };
 
-  console.log('BEFORE TIMEOUT CALL');
-  setTimeout(() => {
-    data.initials = 'ADL';
-    console.log('data2', data);
-    callback();
-  });
+//   console.log('BEFORE TIMEOUT CALL');
+//   setTimeout(() => {
+//     data.initials = 'ADL';
+//     console.log('data inside timeout', data);
+//     callback();
+//   });
 
-  console.log('AFTER TIMEOUT CALL');
-  console.log('DATA1', data);
-};
+//   console.log('AFTER TIMEOUT CALL');
+//   console.log('data after timeout', data);
+// };
 
-console.log('BEFORE MAIN CALL');
-higherOrderFunc(() => {
-  console.log('INSIDE CALLBACK');
-});
-console.log('AFTER MAIN CALL');
-
-// BEFORE MAIN CALL
-// BEFORE TIMEOUT CALL
-// AFTER TIMEOUT CALL
-// INSIDE CALLBACK
-// AFTER MAIN CALL
+// console.log('BEFORE MAIN CALL');
+// higherOrderFunc(() => {
+//   console.log('INSIDE CALLBACK');
+// });
+// console.log('AFTER MAIN CALL');
