@@ -28,3 +28,13 @@ An input is a negative number: Ignore/skip any numbers that are negative. We can
 An input is not a number: Ignore/skip these as well, instead of attempting to call setTimeout with a non-number.
 
 */
+  let arg = process.argv; //use arg[2]...
+
+  const convert = (num) => parseInt(num) * 1000;
+  
+  for (let i = 2; i < arg.length; i++) {
+    setTimeout(() => {
+    console.log("beep");
+   }, convert(arg[i])); 
+  }
+  
