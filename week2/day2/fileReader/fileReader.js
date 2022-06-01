@@ -5,19 +5,16 @@
 
 const fs = require('fs'); //file system (built in library - node.js)
 
-console.log('before read file');
-
-fs.readFile('./data1.txt', 'utf-8', (err, data) => {
-  // console.log('err', err);
+fs.readFile('./data1.txt', 'utf8', (err, data) => {
   console.log('data1', data);
-  fs.readFile('./data2.txt', 'utf-8', (err, data) => {
-    // console.log('err', err);
+  fs.readFile('./data2.txt', 'utf8', (err, data) => {
     console.log('data2', data);
-    fs.readFile('./data3.txt', 'utf-8', (err, data) => {
-      // console.log('err', err);
+    fs.readFile('./data3.txt', 'utf8', (err, data) => {
       console.log('data3', data);
     });
   });
 });
 
-console.log('after read file');
+fs.readFile('./data1.txt', 'utf8', (err, data) => {
+  return data;
+}).then((data) => console.log('data then', data));
