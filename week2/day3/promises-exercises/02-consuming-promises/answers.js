@@ -8,10 +8,7 @@
  */
 function waitForPromise(promise, action){
   /* IMPLEMENT ME */
-  // This is a simple exercise in just waiting for a promise to be done before performing an action.  The promise will resolve after a certain number of milliseconds.
-  promise.setTimeout(()=> {
-    resolve();
-  }, 2000).then(action());
+  promise.then(action);
 }
     
 /**
