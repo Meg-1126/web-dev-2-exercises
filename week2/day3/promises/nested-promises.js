@@ -12,7 +12,9 @@ returnPromise('one').then((data) => {
   });
 });
 
-returnPromise('one').then((data) => {
-  console.log(data);
-  return returnPromise('two');
-}).then;
+returnPromise('one')
+  .then((data) => {
+    console.log(data);
+    return returnPromise('two');
+  })
+  .then();

@@ -77,6 +77,7 @@ const result3 = numbers.map((number) => {
   if (number % 2 === 0) {
     return number * factor;
   }
+  return number;
 });
 console.log(result3); //result3 = [undefined,4,undefined,8,undefined]
 
@@ -85,6 +86,7 @@ console.log(result3); //result3 = [undefined,4,undefined,8,undefined]
 // numbers = [1, 2, 3, 4, 5];
 const result4 = numbers.filter((number) => {
   console.log(number); // Prints every element of the numbers' array
+  return number % 2 === 0;
   if (number % 2 === 0) {
     const newNumber = number + 1; // elements cannot be changed
     return newNumber;
@@ -105,6 +107,13 @@ const result5 = numbers.reduce((total, element) => {
 }, initialValue);
 // initial value of total variable
 
+numbers.reduce((min, element) => {
+  if (element < min) {
+    return element;
+  }
+  return min;
+}, 0);
+
 console.log(result5); // result5 = 15
 
 // Array.sort
@@ -122,6 +131,7 @@ nums.sort((a, b) => {
   if (a > b) return 1; // a will be positioned after b
   if (a < b) return -1; // a will be positioned before b
   return 0; // no changes
+  return a - b;
 });
 
 console.log(nums); // [1,4,21,30,1000]

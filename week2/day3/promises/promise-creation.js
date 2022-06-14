@@ -1,6 +1,6 @@
 const promise = new Promise((resolve, reject) => {
-  resolve('do you see this??');
-  // reject('terrible error message');
+  // resolve('do you see this??');
+  reject('terrible error message');
 });
 
 console.log(promise);

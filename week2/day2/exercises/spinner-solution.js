@@ -1,22 +1,33 @@
-// setInterval(() => {
-//   setTimeout(() => {});
-// });
+// for (let i = 1; i < 4; i++) {
+//   setTimeout(() => {
+//     process.stdout.write('\r|   ');
+//   }, 100 * i);
 
-for (let i = 1; i < 4; i++) {
-  setTimeout(() => {
-    process.stdout.write('\r|   ');
-  }, 1000 * i);
+//   setTimeout(() => {
+//     process.stdout.write('\r/   ');
+//   }, 300 * i);
 
-  setTimeout(() => {
-    process.stdout.write('\r/   ');
-  }, 3000 * i);
+//   setTimeout(() => {
+//     process.stdout.write('\r-   ');
+//   }, 500 * i);
 
-  setTimeout(() => {
-    process.stdout.write('\r-   ');
-  }, 5000 * i);
+//   setTimeout(() => {
+//     // Need to escape the backslash since it's a special character.
+//     process.stdout.write('\r\\   ');
+//   }, 700 * i);
+// }
 
-  setTimeout(() => {
-    // Need to escape the backslash since it's a special character.
-    process.stdout.write('\r\\   \n');
-  }, 7000 * i);
-}
+const array = ['\r|   ', '\r/   ', '\r-   ', '\r\\   '];
+let i = 0;
+const interval = setInterval(() => {
+  if (i > array.length - 1) {
+    i = 0;
+  }
+  process.stdout.write(array[i]);
+  i++;
+}, 200);
+
+setTimeout(() => {
+  clearInterval(interval);
+  process.stdout.write('\n');
+}, 2400);

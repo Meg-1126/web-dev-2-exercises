@@ -5,8 +5,8 @@ const returnRejectedPromise = functions.returnRejectedPromise;
 
 const randomDelay = () => Math.floor(Math.random() * 5000);
 
-const promiseOne = returnPromise('one', 3000);
-const promiseTwo = returnRejectedPromise('two', 3000);
+const promiseOne = returnPromise('one', 1000);
+const promiseTwo = returnPromise('two', 1000);
 const promiseThree = returnPromise('three', 3000);
 
 const promises = [promiseOne, promiseTwo, promiseThree];
@@ -19,8 +19,8 @@ Promise.race(promises)
     console.log('err:', err);
   });
 
-promiseOne.then().catch();
+// promiseOne.then().catch();
 
-promiseTwo.then().catch();
+// promiseTwo.then().catch();
 
-promiseThree.then().catch();
+// promiseThree.then().catch();
