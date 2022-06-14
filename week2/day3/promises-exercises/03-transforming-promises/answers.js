@@ -8,10 +8,19 @@
  */
 function mapPromise(promise, transformer){
   return new Promise((resolve, reject) => {
-    /* IMPLEMENT ME!! */
-  });
-}
+     promise
+    .then((data)=>{
+    resolve(transformer(data));
+    })
+    .catch((err)=>{
+      reject(err);
+    })
+    });
+  }
 
+// * If the first promise resolves with a result, it calls the transformer with the value as an argument.
+//   * If the transformer returns with a value, the new promise resolves with that value.
+//   * If the transformer throws an error, the new promise rejects with that error.
 /**
  * 
  * EXERCISE 2
@@ -20,8 +29,20 @@ function mapPromise(promise, transformer){
  * @returns {Promise<number>}
  */
 function squarePromise(numberPromise){
-  return numberPromise
-    .then(/* IMPLEMENT ME! */);
+  // return numberPromise
+  //   .then((data) => {
+  //     if (Number(data)){
+  //       return data * data;
+  //     } else if (data === ) {
+  //       return parseInt(data) * parseInt(data);
+  //     }
+  //   }).catch((err)=> {
+  //    if (err === NaN) {
+  //     return "Cannot convert this data to a number!";
+  //    } else {
+
+  //    }
+  //   });
 }
 
 /**
