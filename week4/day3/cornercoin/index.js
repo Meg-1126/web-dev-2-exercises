@@ -9,9 +9,26 @@ class Withdrawal {
     balance -= this.amount;
   }
 }
+// Step 1: Deposit class
+class Deposit {
+  constructor(amount) {
+    this.amount = amount;
+  }
 
+  commit() {
+    balance += this.amount;
+  }
+}
+// Step 2: Account class
+class Account {
+  constructor(username) {
+    this.username = username;
+    this.balance = balance;
+  }
+}
 // DRIVER CODE BELOW
 // We use the code below to "drive" the application logic above and make sure it's working as expected
+const myAccount = new Account('snow-patrol');
 
 t1 = new Withdrawal(50.25);
 t1.commit();
@@ -22,3 +39,9 @@ t2.commit();
 console.log('Transaction 2:', t2);
 
 console.log('Balance:', balance);
+
+t3 = new Deposit(120.0);
+t3.commit();
+console.log('Transaction 3:', t3);
+
+console.log(myAccount);
