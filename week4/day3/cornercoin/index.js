@@ -1,12 +1,15 @@
 // let balance = 500.0;
 
 class Account {
-  constructor(username, balance) {
+  constructor(username) {
     this.username = username;
-    this.balance = balance;
+    // this.balance = balance;
+    this.track = [];
   }
-  sum() {
-    
+  get balance () {
+    return this.track.reduce((currentBalance, index)=>{
+      return currentBalance + index;
+    }, 0)
   }
 }
 
@@ -16,7 +19,7 @@ class Transaction {
     this.account = account;
   }
   commit() {
-    this.account.balance += this.value;
+    this.account.track.push(this.value);
   }
 }
 
@@ -41,7 +44,7 @@ class Deposit extends Transaction {
 
 // DRIVER CODE BELOW
 // We use the code below to "drive" the application logic above and make sure it's working as expected
-const myAccount = new Account('snow-patrol', 500.0);
+const myAccount = new Account('snow-patrol');
 console.log(myAccount.balance);
 
 const t1 = new Withdrawal(50.25, myAccount);
