@@ -1,5 +1,4 @@
 class Denizen {
-
   constructor(options) {
     // console.log("constructing:", this.constructor.name, options);
     this.lastTime = new Date();
@@ -26,6 +25,7 @@ class Denizen {
 
   update(t) {
     // if you're out of bounds, despawn
+
     if (this.outOfBounds(this.tank.getBounds())) {
       this.kill();
     } else {
@@ -36,7 +36,10 @@ class Denizen {
   }
 
   updateOneTick() {
-    throw "not implemented";
+    // throw 'not implemented';
+    if (this.type === BiteFish) {
+      // console.log('distance', distance());
+    }
   }
 
   renderRules() {
@@ -46,13 +49,13 @@ class Denizen {
         width: this.width,
         height: this.height,
       },
-      x: this.position.x - Math.floor(this.width/2),
-      y: this.position.y - Math.floor(this.height/2),
+      x: this.position.x - Math.floor(this.width / 2),
+      y: this.position.y - Math.floor(this.height / 2),
     };
   }
 
   onClick(event) {
-    throw "not implemented";
+    throw 'not implemented';
   }
 
   kill(duration) {

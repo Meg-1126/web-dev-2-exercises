@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+      .paragraph1 {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus
+      nesciunt dolores aut nemo eius modi, doloremque numquam animi doloribus
+      tempore vero magnam quod earum quisquam ex beatae officiis, blanditiis
+      eaque?
+    </p>
+    <p id="p1">
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum porro
+      quibusdam non blanditiis voluptatum, rem ducimus maiores? Quia inventore
+      repellendus illum quidem enim fuga, saepe deleniti in natus mollitia
+      necessitatibus.
+    </p>
+    <div id="container">
+      <button id="toggleClass" name="toggle">toggle class</button>
+    </div>
+    <script>
+      $(document).ready(() => {
+        //css
+        // $('p').css('color', 'red');
+        //Add class
+        // $('p').addClass('paragraph1');
+        // $('p#p1').addClass('paragraph1');
+
+        //Remove class
+        // $('p#p1').removeClass('paragraph1');
+        //Toggle class
+        $('#toggleClass').click(() => {
+          $('p#p1').toggleClass('paragraph1');
+        });
+        //text - get and set
+        // console.log($('p#p1').text());
+        // $('p#p1').text('changed');
+        //html - get and set
+        // console.log($('p#p1').html());
+        // $('p#p1').html('<h1>changed</h1>');
+        //append
+        const h1 = document.createElement('h1');
+        h1.textContent = 'New title';
+        // document.body.append(h1);
+        //prepend
+        // document.body.prepend(h1)
+        //append to
+        // $('p').appendTo($('#container'));
+        //prepend to
+        // $('p').prependTo($('#container'));
+        //before
+        $('p#p1').before($('#container'));
+        //after
+        $('#container').after($('p#p1'));
+        //empty
+        // $('p#p1').empty();
+        //detach
+        // $('#container').detach();
+        //attribute - get and set
+        console.log($('button').attr('name', 'changed'));
+        //remove attribute
+        $('button').removeAttr('name');
+        //wrap
+        // $('p').wrap('<div></div>');
+        //wrap all
+        // $('p').wrapAll('<div></div>');
+
+        //each
+        $('p').each((index) => {
+          console.log($('p')[index].textContent);
+        });
+        //to array
+        const arr = $('p').toArray();
+        console.log('arr', arr);
+      });
+    </script>
+  </body>
+</html>
