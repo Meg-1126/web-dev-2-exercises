@@ -1,5 +1,4 @@
 class Starter extends Denizen {
-
   constructor(options) {
     super(options);
     this.imageUri = '/images/volcano.jpg';
@@ -11,6 +10,9 @@ class Starter extends Denizen {
   }
 
   onClick(event) {
+    this.height += 100;
+    this.width += 100;
+
     var xVel = randRangeInt(-300, 300);
     var yVel = 400 - Math.abs(xVel);
     var s = new Seed({

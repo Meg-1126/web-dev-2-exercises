@@ -103,7 +103,7 @@ The first new feature that you're going to work on is adding a new fish to the f
 
 ### Feature 1: Bite Fish
 
-Before we add a new fish to the fishtank, let's take a look at the other two fish classes. Currently there are two subclasses of fish SwitchFish in switch_fish.js and GoFish in go_fish.js.
+Before we add a new fish to the fishtank, let's take a look at the other two fish classes. Currently there are two subclasses of fish SwitchFish in `switch_fish.js` and GoFish in `go_fish.js`.
 
 SwitchFish is simple, it just overrides one method, onClick. In this method, switch fish calls this.makeNewVelocity(50); which will cause it to change direction randomly when clicked.
 

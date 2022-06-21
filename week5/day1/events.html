@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <button id="show">Click me to show!</button>
+    <button id="hide">Click me to hide!</button>
+    <button id="toggle">Click me to toggle!</button>
+
+    <p>
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias amet autem
+      quia laudantium nulla beatae id animi officia cum dolorem.
+    </p>
+    <p id="x"></p>
+    <p id="y"></p>
+    <select name="" id="">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+    <form action="">
+      <input type="text" />
+    </form>
+    <script>
+      $(document).ready(() => {
+        // Mouse Events
+        // Click
+        // const button = document.querySelector('button');
+        // button.addEventListener('click', () => {
+        //   console.log('clicked');
+        // });
+        $('button').on('click', () => {
+          console.log('clicked jquery');
+        });
+        $('button').click(function () {
+          console.log('clicked jquery');
+        });
+        // Click and alert
+        // $('button').click(() => {
+        //   alert('clicked jquery');
+        // });
+        // Click and hide / show
+        $('button#hide').click(() => {
+          $('p').hide();
+        });
+        $('button#show').click(() => {
+          $('p').show();
+        });
+        // Click and toggle
+        $('button#toggle').click(() => {
+          $('p').toggle();
+        });
+        // Double click
+        // $('p').dblclick(() => {
+        //   $('p').css('color', 'green');
+        // });
+        // Mouse Enter
+        // $('p').mouseenter(() => {
+        //   $('p').css('color', 'green');
+        // });
+        // Mouse Leave
+        // $('p').mouseleave(() => {
+        //   $('p').css('color', 'black');
+        // });
+        // Hover
+        $('p').hover(
+          () => {
+            //mouse enter
+            $('p').css('color', 'green');
+          },
+          () => {
+            //mouse leave
+            $('p').css('color', 'black');
+          }
+        );
+        // Mouse Move
+        // $(document).mousemove((e) => {
+        //   $('#x').html(`X: ${e.clientX}`);
+        //   $('#y').html(`Y: ${e.clientY}`);
+        // });
+        // Mouse Down
+        // $(document).mousedown((e) => {
+        //   $('#x').html(`X: ${e.clientX}`);
+        //   $('#y').html(`Y: ${e.clientY}`);
+        // });
+        // Mouse Up
+        $(document).mouseup((e) => {
+          $('#x').html(`X: ${e.clientX}`);
+          $('#y').html(`Y: ${e.clientY}`);
+        });
+        //Input events
+        //Focus
+        $('input').focus(() => {
+          $('input').css('background-color', 'blue');
+        });
+        //Blur
+        $('input').blur(() => {
+          $('input').css('background-color', 'white');
+        });
+        //Key Up
+        $('input').keyup(() => {
+          console.log('key pressed');
+        });
+        //Change
+        $('select').change(() => {
+          console.log($('select').val());
+        });
+        //submit
+        $('form').submit((e) => {
+          e.preventDefault();
+          console.log($('input').val());
+        });
+      });
+    </script>
+  </body>
+</html>

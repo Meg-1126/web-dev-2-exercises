@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <h1>jquery class title</h1>
+    <div>
+      <h1 id="heading1">Day 1: Selectors and Events</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia ipsam
+        deleniti a corrupti cumque cupiditate quod!
+        <span>Dicta aliquid eaque voluptatum.</span>
+      </p>
+      <h1 class="heading2">Day 2: DOM Manipulation & Methods</h1>
+    </div>
+    <ul id="list">
+      <li>List Item 1</li>
+      <li>List Item 2</li>
+      <li>List Item 3</li>
+    </ul>
+    <input type="text" name="" id="" />
+    <input type="email" />
+    <a href="google.com">Google</a>
+    <script>
+      $(document).ready(() => {
+        //select h1
+        // const h1 = document.querySelectorAll('h1');
+        // h1.forEach((heading) => {
+        //   heading.textContent = 'new title';
+        // });
+        // h1.textContent = 'new title';
+        // $('h1').html('new title');
+        //select h1 with id=heading1
+        // $('h1#heading1').html('new title');
+        //select class heading2
+        // $('.heading2').html('new title');
+        // select span inside p
+        $('p span').css('color', 'red');
+        // select li of ul with id=list
+        $('ul#list li:last').css('color', 'green');
+        //select input type of text
+        $('input[type=text]').css('background-color', 'yellow');
+        //select attr href
+        // $('[href]').html('Facebook');
+        //select attr href=google.com
+        $('[href="google.com"]').html('Facebook');
+        //select all
+        // $('*').hide();
+      });
+    </script>
+  </body>
+</html>
