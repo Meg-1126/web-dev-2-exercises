@@ -2,10 +2,10 @@ class Pizza {
   constructor() {
     this.toppings = ['cheese'];
   }
-}
 
-function addTopping (topping) {
-  pizza1.toppings.push(topping);
+  addTopping (topping) {
+   this.toppings.push(topping);
+  }
 }
 
 let pizza1 = new Pizza();
