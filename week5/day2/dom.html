@@ -19,69 +19,74 @@
       tempore vero magnam quod earum quisquam ex beatae officiis, blanditiis
       eaque?
     </p>
+    <div id="container" name="containerDiv">
+      <button>click</button>
+    </div>
     <p id="p1">
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum porro
       quibusdam non blanditiis voluptatum, rem ducimus maiores? Quia inventore
       repellendus illum quidem enim fuga, saepe deleniti in natus mollitia
       necessitatibus.
     </p>
-    <div id="container">
-      <button id="toggleClass" name="toggle">toggle class</button>
-    </div>
     <script>
       $(document).ready(() => {
         //css
-        // $('p').css('color', 'red');
+        // $('p').css('color', 'green');
         //Add class
-        // $('p').addClass('paragraph1');
-        // $('p#p1').addClass('paragraph1');
-
+        $('p#p1').addClass('paragraph1');
         //Remove class
-        // $('p#p1').removeClass('paragraph1');
+        $('p#p1').removeClass('paragraph1');
         //Toggle class
-        $('#toggleClass').click(() => {
+        $('p#p1').click(() => {
           $('p#p1').toggleClass('paragraph1');
         });
         //text - get and set
         // console.log($('p#p1').text());
         // $('p#p1').text('changed');
         //html - get and set
-        // console.log($('p#p1').html());
-        // $('p#p1').html('<h1>changed</h1>');
+        console.log($('p#p1').html());
+        $('p#p1').html('<h1>Changed</h1>');
         //append
-        const h1 = document.createElement('h1');
-        h1.textContent = 'New title';
-        // document.body.append(h1);
+        const h2 = document.createElement('h2');
+        h2.textContent = 'appended';
+        // document.body.append('<h2>appended</h2>');
+        // document.body.append(h2);
         //prepend
-        // document.body.prepend(h1)
+        // document.body.prepend('<h2>appended</h2>');
+        // document.body.prepend(h2);
         //append to
         // $('p').appendTo($('#container'));
         //prepend to
-        // $('p').prependTo($('#container'));
+        // $('p').prependTo($('#container'))
         //before
-        $('p#p1').before($('#container'));
+        // $('p#p1').before($('#container'));
         //after
-        $('#container').after($('p#p1'));
+        // $('p#p1').after($('#container'));
         //empty
-        // $('p#p1').empty();
+        // $('#container').empty();
         //detach
         // $('#container').detach();
         //attribute - get and set
-        console.log($('button').attr('name', 'changed'));
+        console.log('name div', $('#container').attr('name'));
+        $('#container').attr('name', 'newName');
         //remove attribute
-        $('button').removeAttr('name');
+        $('#container').removeAttr('name');
         //wrap
         // $('p').wrap('<div></div>');
         //wrap all
-        // $('p').wrapAll('<div></div>');
-
+        $('p').wrapAll('<div></div>');
         //each
-        $('p').each((index) => {
-          console.log($('p')[index].textContent);
-        });
+        // $('p').each((index, p) => {
+        //   console.log('p', index, p.textContent);
+        // });
         //to array
-        const arr = $('p').toArray();
-        console.log('arr', arr);
+        // const arr = $('p').toArray();
+        // console.log('arr', arr);
+        //map
+        const newArr = $('p').map((index, p) => {
+          return p.textContent;
+        });
+        console.log('newArr', newArr);
       });
     </script>
   </body>

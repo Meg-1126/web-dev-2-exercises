@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <div id="container"></div>
+    <ul id="list"></ul>
+    <form id="post-form" action="">
+      <div>
+        <label for="title">Title:</label>
+        <input type="text" name="title" id="post-title" />
+      </div>
+      <div>
+        <label for="body">Body:</label>
+        <textarea name="body" id="body" cols="30" rows="10"></textarea>
+      </div>
+      <button type="submit">Add Post</button>
+    </form>
+    <div id="posts"></div>
+    <script>
+      $(document).ready(() => {
+        //load - filePath, cb(response, status, xhr)
+        // $('#container').load('test1.html', (response, status, xhr) => {
+        //   console.log('res', response);
+        //   console.log('status', status);
+        //   console.log('xhr', xhr);
+        // });
+        //get - file, cb(data)
+        $.get('test.html', (data) => {
+          // console.log('data', data);
+          $('#container').html(data);
+        });
+        //getJSON - file, cb(data)
+        $.getJSON('data.json', (data) => {
+          // console.log('data json', data);
+          $.each(data, (index, user) => {
+            // console.log('user', user);
+            // console.log('index', index);
+            $('#list').append(`<li>${user.firstName} ${user.lastName}</li>`);
+          });
+        });
+        // ajax - { method, url, dataType }.done(cb(data));
+        //get
+        $.ajax({
+          method: 'get',
+          url: 'https://jsonplaceholder.typicode.com/posts',
+          dataType: 'json',
+        }).done((data) => {
+          console.log('data get ajax', data);
+          $.each(data, (i, post) => {
+            $('#posts').append(`
+            <div class='post'>
+              <h2>${post.title}</h2>
+              <p>${post.body}</p>
+              </div>
+            `);
+          });
+        });
+        //post
+        $('#post-form').on('submit', (e) => {
+          e.preventDefault();
+          console.log('submit post');
+          const title = $('#post-title').val();
+          const body = $('#body').val();
+          const data = { title, body };
+          $.ajax({
+            method: 'post',
+            data: data,
+            url: 'https://jsonplaceholder.typicode.com/posts',
+            dataType: 'json',
+          }).done((data) => {
+            console.log('data post ajax', data);
+            // $.each(data, (i, post) => {
+            //   $('#posts').append(`
+            //   <div class='post'>
+            //     <h2>${post.title}</h2>
+            //     <p>${post.body}</p>
+            //     </div>
+            //   `);
+            // });
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
