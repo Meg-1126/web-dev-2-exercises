@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <input type="text" name="" id="input" />
+    <script>
+      const arr = [1, 2, 3, 4, 5];
+      const person = {
+        name: 'Arthur',
+        job: 'Instructor',
+      };
+      //find
+      // const found = arr.find((num) => {
+      //   return num === 3;
+      // });
+      const found = _.find(arr, (num) => {
+        return num === 6;
+      });
+      console.log('found', found);
+
+      //findIndex(data,cb) similar to .indexOf
+      const foundIndex = _.findIndex(arr, (num) => {
+        return num === 3;
+      });
+      console.log('found index', foundIndex);
+
+      //forEach
+      // Object.entries(person) [[key,value],[key,value]]
+      // person.forEach((prop) => {
+      //   console.log('prop', prop);
+      // });
+      _.forEach(person, (value, key) => {
+        console.log('value', value);
+        console.log('key', key);
+      });
+
+      //map
+      // const newArr = _.map(arr, (num) => {
+      //   return num + 1;
+      // });
+      const newArr = _.map(person, (prop) => {
+        return prop;
+      });
+      console.log('newArr map', newArr);
+
+      //filter
+      const filterArr = _.filter(arr, (num) => {
+        return num % 2 === 0;
+      });
+      console.log('newArr filter', filterArr);
+
+      //first
+      const first = _.first(arr);
+      console.log('first', first);
+
+      //last
+      const last = _.last(arr);
+      console.log('last', last);
+
+      //chunk
+      const chunk = _.chunk(arr, 3);
+      console.log('chunk', chunk);
+
+      //camelCase
+      const camelCase = _.camelCase('Iron Man');
+      console.log('camelCase', camelCase);
+
+      //kebabCase
+      const kebabCase = _.kebabCase('Iron Man');
+      console.log('kebabCase', kebabCase);
+      //capitalize
+      const capitalize = _.capitalize('Iron Man');
+      console.log('capitalize', capitalize);
+      //replace
+      const replace = _.replace('Iron Man', 'Man', 'Woman');
+      console.log('replace', replace);
+      //assign
+      _.assign(person, { age: 30 });
+      console.log('person', person);
+
+      //times
+      function printSomething() {
+        console.log('print');
+      }
+      _.times(3, printSomething);
+      //debounce
+      const debounce = () => {
+        console.log('typing...');
+      };
+      $('#input').on('keyup', _.debounce(debounce, 1000));
+    </script>
+  </body>
+</html>

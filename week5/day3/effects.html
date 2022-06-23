@@ -23,12 +23,12 @@
     </style>
   </head>
   <body>
-    <button id="fadeIn">Fade In</button>
+    <button id="fadeIn">Fade in</button>
     <button id="fadeOut">Fade Out</button>
     <button id="fadeTog">Fade Toggle</button>
     <br />
-    <button id="slideUp">Slide Up</button>
     <button id="slideDown">Slide Down</button>
+    <button id="slideUp">Slide Up</button>
     <button id="slideTog">Slide Toggle</button>
     <div id="box1">
       <h1>jquery class - day 3</h1>
@@ -37,20 +37,19 @@
     <button id="moveRight">Move Right</button>
     <button id="moveLeft">Move Left</button>
     <button id="moveAround">Move Around</button>
-
     <div id="box2"></div>
     <script>
       $(document).ready(() => {
         //fade in - ms and cb
         $('#fadeIn').on('click', () => {
           $('#box1').fadeIn(1000, () => {
-            console.log('fade in done');
+            // console.log('fade in done');
           });
         });
         //fade out
         $('#fadeOut').on('click', () => {
           $('#box1').fadeOut(1000, () => {
-            console.log('fade out done');
+            // console.log('fade out done');
           });
         });
         //fade toggle
@@ -68,7 +67,7 @@
         //slide down
         $('#slideDown').on('click', () => {
           $('#box1').slideDown(1000, () => {
-            console.log('slide dpwn done');
+            console.log('slide down done');
           });
         });
         //slide toggle
@@ -85,17 +84,17 @@
         $('#moveRight').on('click', () => {
           $('#box2').animate({
             left: 300,
-            height: 500,
-            width: 500,
+            width: 200,
+            height: 200,
           });
         });
         //move left
         $('#moveLeft').on('click', () => {
           $('#box2').animate({
             left: 0,
-            height: 100,
             width: 100,
-            backgroundColor: '#ffffff',
+            height: 100,
+            opacity: 0.5,
           });
         });
         //move around
